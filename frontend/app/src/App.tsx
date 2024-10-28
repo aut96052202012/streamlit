@@ -740,6 +740,15 @@ export class App extends PureComponent<Props, State> {
   }
 
   handlePageConfigChanged = (pageConfig: PageConfig): void => {
+    // Save current page layout before rerun
+    this.setState((prevState: State) => {
+      const pageLayouts = prevState.pageLayouts
+      pageLayouts[prevState.currentPageScriptHash] = prevState.layout
+      return {
+        pageLayouts: pageLayouts,
+      }
+    })
+
     const { title, favicon, layout, initialSidebarState, menuItems } =
       pageConfig
 
@@ -1018,19 +1027,19 @@ export class App extends PureComponent<Props, State> {
       // Set the favicon to its default values
       this.onPageIconChanged(`${process.env.PUBLIC_URL}/favicon.png`)
 
-      // Use previously saved layout if exists, otherwise default to CENTERED
-      // Pages using set_page_config(layout=...) will be overriding these values
-      this.setState((prevState: State) => {
-        const newLayout =
-          pageLayouts[newPageScriptHash] ?? PageConfig.Layout.CENTERED
-        return {
-          layout: newLayout,
-          userSettings: {
-            ...prevState.userSettings,
-            wideMode: newLayout === PageConfig.Layout.WIDE,
-          },
-        }
-      })
+      // // Use previously saved layout if exists, otherwise default to CENTERED
+      // // Pages using set_page_config(layout=...) will be overriding these values
+      // this.setState((prevState: State) => {
+      //   const newLayout =
+      //     pageLayouts[newPageScriptHash] ?? PageConfig.Layout.CENTERED
+      //   return {
+      //     layout: newLayout,
+      //     userSettings: {
+      //       ...prevState.userSettings,
+      //       wideMode: newLayout === PageConfig.Layout.WIDE,
+      //     },
+      //   }
+      // })
     } else {
       this.setState({
         fragmentIdsThisRun,
@@ -1062,6 +1071,20 @@ export class App extends PureComponent<Props, State> {
         mainScriptHash
       )
     }
+
+    // Use previously saved layout if exists, otherwise default to CENTERED
+    // Pages using set_page_config(layout=...) will be overriding these values
+    this.setState((prevState: State) => {
+      const newLayout =
+        pageLayouts[newPageScriptHash] ?? PageConfig.Layout.CENTERED
+      return {
+        layout: newLayout,
+        userSettings: {
+          ...prevState.userSettings,
+          wideMode: newLayout === PageConfig.Layout.WIDE,
+        },
+      }
+    })
   }
 
   /**
@@ -1392,6 +1415,7 @@ export class App extends PureComponent<Props, State> {
    * to enable runOnSave for this session.
    */
   rerunScript = (alwaysRunOnSave = false): void => {
+    console.log("lets rerun!!")
     this.closeDialog()
 
     if (!this.isServerConnected()) {
@@ -1437,7 +1461,7 @@ export class App extends PureComponent<Props, State> {
 
   onPageChange = (pageScriptHash: string): void => {
     const { elements, mainScriptHash } = this.state
-
+    console.log(this.state.currentPageScriptHash)
     // We are about to change the page, so clear all auto reruns
     // This also happens in handleNewSession, but it might be too late compared
     // to small interval values, which might trigger a rerun before the new
@@ -1457,14 +1481,14 @@ export class App extends PureComponent<Props, State> {
         .filter(notUndefined)
     )
 
-    // Save current page layout before rerun
-    this.setState((prevState: State) => {
-      const pageLayouts = prevState.pageLayouts
-      pageLayouts[prevState.currentPageScriptHash] = prevState.layout
-      return {
-        pageLayouts: pageLayouts,
-      }
-    })
+    // // Save current page layout before rerun
+    // this.setState((prevState: State) => {
+    //   const pageLayouts = prevState.pageLayouts
+    //   pageLayouts[prevState.currentPageScriptHash] = prevState.layout
+    //   return {
+    //     pageLayouts: pageLayouts,
+    //   }
+    // })
 
     this.sendRerunBackMsg(
       this.widgetMgr.getActiveWidgetStates(activeWidgetIds),
@@ -1488,6 +1512,15 @@ export class App extends PureComponent<Props, State> {
     pageScriptHash?: string,
     isAutoRerun?: boolean
   ): void => {
+    console.log("AAAAAAA sendRerunBackMsg")
+    // // Save current page layout before rerun
+    // this.setState((prevState: State) => {
+    //   const pageLayouts = prevState.pageLayouts
+    //   pageLayouts[prevState.currentPageScriptHash] = prevState.layout
+    //   return {
+    //     pageLayouts: pageLayouts,
+    //   }
+    // })
     const baseUriParts = this.getBaseUriParts()
     if (!baseUriParts) {
       // If we don't have a connectionManager or if it doesn't have an active
