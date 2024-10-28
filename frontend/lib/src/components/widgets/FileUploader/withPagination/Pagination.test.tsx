@@ -55,6 +55,8 @@ describe("Pagination widget", () => {
     const prevPaginationButton = screen.getAllByTestId(
       "stBaseButton-minimal"
     )[0]
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(prevPaginationButton)
     expect(props.onPrevious).toHaveBeenCalledTimes(1)
   })
@@ -64,6 +66,8 @@ describe("Pagination widget", () => {
     const nextPaginationButton = screen.getAllByTestId(
       "stBaseButton-minimal"
     )[1]
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(nextPaginationButton)
     expect(props.onNext).toHaveBeenCalledTimes(1)
   })

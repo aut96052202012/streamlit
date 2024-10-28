@@ -184,6 +184,8 @@ describe("TextInput widget", () => {
     render(<TextInput {...props} />)
 
     const textInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(textInput, { target: { value: "testing" } })
     fireEvent.blur(textInput)
 
@@ -225,6 +227,8 @@ describe("TextInput widget", () => {
     render(<TextInput {...props} />)
 
     const textInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyPress(textInput, { key: "Enter" })
 
     expect(props.widgetMgr.setStringValue).toHaveBeenCalledTimes(1)
@@ -238,9 +242,13 @@ describe("TextInput widget", () => {
     render(<TextInput {...props} />)
 
     const textInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(textInput, { target: { value: "0123456789" } })
     expect(textInput).toHaveValue("0123456789")
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(textInput, { target: { value: "0123456789a" } })
     expect(textInput).toHaveValue("0123456789")
   })
@@ -253,6 +261,8 @@ describe("TextInput widget", () => {
     render(<TextInput {...props} />)
 
     const textInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(textInput, { target: { value: "TEST" } })
     expect(textInput).toHaveValue("TEST")
 
@@ -277,6 +287,8 @@ describe("TextInput widget", () => {
     render(<TextInput {...props} />)
 
     const textInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(textInput, { target: { value: "TEST" } })
     expect(textInput).toHaveValue("TEST")
 
@@ -304,6 +316,8 @@ describe("TextInput widget", () => {
     render(<TextInput {...props} />)
     const textInput = screen.getByRole("textbox")
     // Change the widget value
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(textInput, { target: { value: "TEST" } })
 
     act(() => {
@@ -431,6 +445,8 @@ describe("TextInput widget", () => {
 
     // Make some change to cause a rerender
     const textInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(textInput, { target: { value: "0123456789" } })
     expect(textInput).toHaveValue("0123456789")
 

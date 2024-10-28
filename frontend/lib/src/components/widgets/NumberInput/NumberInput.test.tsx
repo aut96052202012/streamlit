@@ -181,6 +181,8 @@ describe("NumberInput widget", () => {
 
     const numberInput = screen.getByTestId("stNumberInputField")
     // Change the widget value
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(numberInput, {
       target: { value: 15 },
     })
@@ -277,6 +279,8 @@ describe("NumberInput widget", () => {
       render(<NumberInput {...props} />)
       const numberInput = screen.getByTestId("stNumberInputField")
 
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.keyDown(numberInput, {
         key: "ArrowDown",
       })
@@ -306,6 +310,8 @@ describe("NumberInput widget", () => {
 
       render(<NumberInput {...props} />)
 
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.keyPress(screen.getByTestId("stNumberInputField"), {
         key: "Enter",
       })
@@ -435,6 +441,8 @@ describe("NumberInput widget", () => {
 
       render(<NumberInput {...props} />)
 
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.keyPress(screen.getByTestId("stNumberInputField"), {
         key: "Enter",
       })
@@ -451,6 +459,8 @@ describe("NumberInput widget", () => {
 
       render(<NumberInput {...props} />)
 
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.keyPress(screen.getByTestId("stNumberInputField"), {
         key: "Enter",
       })
@@ -481,6 +491,8 @@ describe("NumberInput widget", () => {
 
         const stepUpButton = screen.getByTestId("stNumberInputStepUp")
         for (let i = 0; i < 5; i++) {
+          // TODO: Utilize user-event instead of fireEvent
+          // eslint-disable-next-line testing-library/prefer-user-event
           fireEvent.click(stepUpButton)
         }
         expect(screen.getByTestId("stNumberInputField")).toHaveValue(15)
@@ -492,6 +504,8 @@ describe("NumberInput widget", () => {
 
         const stepDownButton = screen.getByTestId("stNumberInputStepDown")
         for (let i = 0; i < 5; i++) {
+          // TODO: Utilize user-event instead of fireEvent
+          // eslint-disable-next-line testing-library/prefer-user-event
           fireEvent.click(stepDownButton)
         }
         expect(screen.getByTestId("stNumberInputField")).toHaveValue(5)
@@ -503,6 +517,8 @@ describe("NumberInput widget", () => {
       render(<NumberInput {...props} />)
 
       // Increment
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.click(screen.getByTestId("stNumberInputStepUp"))
 
       // Check step properly enforced
@@ -518,6 +534,8 @@ describe("NumberInput widget", () => {
       render(<NumberInput {...props} />)
 
       const numberInput = screen.getByTestId("stNumberInputField")
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.keyDown(numberInput, {
         key: "ArrowUp",
       })
@@ -533,6 +551,8 @@ describe("NumberInput widget", () => {
       render(<NumberInput {...props} />)
 
       const numberInput = screen.getByTestId("stNumberInputField")
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.keyDown(numberInput, {
         key: "ArrowDown",
       })
@@ -548,6 +568,8 @@ describe("NumberInput widget", () => {
       render(<NumberInput {...props} />)
 
       // Decrement
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.click(screen.getByTestId("stNumberInputStepDown"))
       expect(screen.getByTestId("stNumberInputField")).toHaveValue(9)
     })
@@ -561,6 +583,8 @@ describe("NumberInput widget", () => {
       render(<NumberInput {...props} />)
 
       // Increment
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.click(screen.getByTestId("stNumberInputStepUp"))
       expect(screen.getByTestId("stNumberInputField")).toHaveValue(11)
     })
@@ -572,6 +596,8 @@ describe("NumberInput widget", () => {
       const stepDownButton = screen.getByTestId("stNumberInputStepDown")
       expect(stepDownButton).not.toBeDisabled()
 
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.click(stepDownButton)
 
       expect(screen.getByTestId("stNumberInputField")).toHaveValue(0)
@@ -585,6 +611,8 @@ describe("NumberInput widget", () => {
       const stepUpButton = screen.getByTestId("stNumberInputStepUp")
       expect(stepUpButton).not.toBeDisabled()
 
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.click(stepUpButton)
 
       expect(screen.getByTestId("stNumberInputField")).toHaveValue(2)
@@ -659,6 +687,8 @@ describe("NumberInput widget", () => {
     // Make some change to cause a rerender
     const numberInput = screen.getByTestId("stNumberInputField")
     // Change the widget value
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(numberInput, {
       target: { value: 15 },
     })

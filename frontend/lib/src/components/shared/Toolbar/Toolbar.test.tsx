@@ -101,6 +101,8 @@ describe("Toolbar element", () => {
     const toolbarButton = screen.getAllByRole("button")
     expect(toolbarButton).toHaveLength(2)
     // Clicking the second button should close the fullscreen mode
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(toolbarButton[1])
 
     // Check that onCollapse was clicked
@@ -122,6 +124,8 @@ describe("Toolbar element", () => {
     const toolbarButton = screen.getAllByRole("button")
     expect(toolbarButton).toHaveLength(2)
     // Clicking the second button should close the fullscreen mode
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(toolbarButton[1])
 
     // Check that onCollapse was clicked
@@ -190,6 +194,8 @@ describe("ToolbarAction Button element", () => {
     const toolbarButton = screen.getByRole("button")
     expect(toolbarButton).toBeInTheDocument()
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(toolbarButton)
 
     // Check that onClick callback was clicked

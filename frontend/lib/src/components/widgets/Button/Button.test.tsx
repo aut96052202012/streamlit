@@ -81,6 +81,8 @@ describe("Button widget", () => {
       render(<Button {...props} />)
 
       const buttonWidget = screen.getByRole("button")
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.click(buttonWidget)
 
       expect(props.widgetMgr.setTriggerValue).toHaveBeenCalledWith(
@@ -97,6 +99,8 @@ describe("Button widget", () => {
       render(<Button {...props} />)
 
       const buttonWidget = screen.getByRole("button")
+      // TODO: Utilize user-event instead of fireEvent
+      // eslint-disable-next-line testing-library/prefer-user-event
       fireEvent.click(buttonWidget)
 
       expect(props.widgetMgr.setTriggerValue).toHaveBeenCalledWith(

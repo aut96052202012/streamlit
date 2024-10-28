@@ -84,6 +84,8 @@ describe("ColorPicker widget", () => {
     render(<BaseColorPicker {...props} />)
 
     const colorBlock = screen.getByTestId("stColorPickerBlock")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(colorBlock)
 
     expect(colorBlock).toHaveStyle("background-color: #000000")
@@ -97,9 +99,13 @@ describe("ColorPicker widget", () => {
     render(<BaseColorPicker {...props} />)
 
     const colorBlock = screen.getByTestId("stColorPickerBlock")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(colorBlock)
 
     const colorInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(colorInput, { target: { value: "#333" } })
 
     expect(colorInput).toHaveValue("#333333")
@@ -112,9 +118,13 @@ describe("ColorPicker widget", () => {
 
     const newColor = "#E91E63"
     const colorBlock = screen.getByTestId("stColorPickerBlock")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(colorBlock)
 
     const colorInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(colorInput, { target: { value: newColor } })
 
     expect(colorInput).toHaveValue(newColor)

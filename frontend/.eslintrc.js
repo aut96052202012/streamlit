@@ -36,8 +36,6 @@ module.exports = {
     "plugin:prettier/recommended",
     // Recommended Jest configuration to enforce good testing practices
     "plugin:jest/recommended",
-    // Uses the recommended rules from React Testing Library:
-    "plugin:testing-library/react",
     // Uses the recommended rules from lodash
     "plugin:lodash/recommended",
   ],
@@ -217,6 +215,14 @@ module.exports = {
       files: ["**/*.test.ts", "**/*.test.tsx", "lib/src/theme/**/*"],
       rules: {
         "streamlit-custom/no-hardcoded-theme-values": ["off"],
+      },
+    },
+    {
+      // test-only rules
+      files: ["**/*.test.ts", "**/*.test.tsx"],
+      extends: ["plugin:testing-library/react"],
+      rules: {
+        "testing-library/prefer-user-event": "error",
       },
     },
   ],

@@ -57,6 +57,8 @@ describe("Tooltip component", () => {
     )
 
     const tooltip = screen.getByTestId("stTooltipHoverTarget")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.mouseOver(tooltip)
 
     expect(screen.queryByText("the content")).not.toBeInTheDocument()
@@ -91,6 +93,8 @@ describe("Tooltip component", () => {
     )
 
     const tooltip = screen.getByTestId("stTooltipHoverTarget")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.mouseOver(tooltip)
 
     const tooltipContent = await screen.findByText("the content")

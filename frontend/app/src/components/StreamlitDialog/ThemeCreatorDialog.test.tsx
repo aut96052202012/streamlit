@@ -183,12 +183,18 @@ describe("Opened ThemeCreatorDialog", () => {
     const primaryColorPicker = within(themeColorPickers[0]).getByTestId(
       "stColorPickerBlock"
     )
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(primaryColorPicker)
 
     const newColor = "#e91e63"
     const colorInput = screen.getByRole("textbox")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(colorInput, { target: { value: newColor } })
     // Close out of the popover
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(primaryColorPicker)
 
     expect(mockAddThemes).toHaveBeenCalled()
@@ -207,6 +213,8 @@ describe("Opened ThemeCreatorDialog", () => {
       addThemes: mockAddThemes,
     })
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(screen.getByRole("combobox"))
     const options = screen.getAllByRole("option")
 
@@ -214,6 +222,8 @@ describe("Opened ThemeCreatorDialog", () => {
       Object.keys(CustomThemeConfig.FontFamily).length
     )
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(options[2])
     expect(mockAddThemes).toHaveBeenCalled()
     expect(
@@ -233,6 +243,8 @@ describe("Opened ThemeCreatorDialog", () => {
       addThemes: mockAddThemes,
     })
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(screen.getByRole("combobox"))
     const options = screen.getAllByRole("option")
 
@@ -251,6 +263,8 @@ describe("Opened ThemeCreatorDialog", () => {
     })
 
     const backButton = screen.getByTestId("stThemeCreatorBack")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(backButton)
     expect(props.backToSettings).toHaveBeenCalled()
   })
@@ -265,6 +279,8 @@ describe("Opened ThemeCreatorDialog", () => {
     const copyBtn = screen.getByRole("button", {
       name: "Copy theme to clipboard",
     })
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(copyBtn)
 
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(`[theme]

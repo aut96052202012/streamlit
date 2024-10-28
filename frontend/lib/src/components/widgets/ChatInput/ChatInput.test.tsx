@@ -87,6 +87,8 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "Sample text" } })
     expect(chatInput).toHaveTextContent("Sample text")
   })
@@ -96,8 +98,12 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(chatInput).toHaveTextContent("1234567890")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "12345678901" } })
     expect(chatInput).toHaveTextContent("1234567890")
   })
@@ -108,8 +114,12 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(chatInput).toHaveTextContent("1234567890")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyDown(chatInput, { key: "Enter" })
     expect(spy).toHaveBeenCalledWith(
       props.element,
@@ -127,8 +137,12 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(chatInput).toHaveTextContent("1234567890")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyDown(chatInput, { key: "Enter" })
     expect(chatInput).toHaveFocus()
   })
@@ -139,8 +153,12 @@ describe("ChatInput widget", () => {
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
     const chatButton = screen.getByTestId("stChatInputSubmitButton")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(chatInput).toHaveTextContent("1234567890")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(chatButton)
     expect(chatInput).toHaveFocus()
   })
@@ -151,7 +169,11 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyDown(chatInput, { key: "Enter" })
     expect(spy).toHaveBeenCalledWith(
       props.element,
@@ -169,6 +191,8 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyDown(chatInput, { key: "Enter" })
     expect(spy).not.toHaveBeenCalledWith(props.element, "", {
       fromUi: true,
@@ -184,6 +208,8 @@ describe("ChatInput widget", () => {
     const instructions = screen.getByTestId("InputInstructions")
     expect(instructions).toHaveTextContent("")
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(instructions).toHaveTextContent("")
   })
@@ -194,8 +220,12 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
     const chatInput = screen.getByTestId("stChatInputTextArea")
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(chatInput).toHaveTextContent("1234567890")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyDown(chatInput, { key: "Enter", shiftKey: true })
     // We cannot test the value to be changed cause that is essentially a
     // change event.
@@ -209,8 +239,12 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(chatInput).toHaveTextContent("1234567890")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyDown(chatInput, { key: "Enter", ctrlKey: true })
     // We cannot test the value to be changed cause that is essentially a
     // change event.
@@ -224,8 +258,12 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "1234567890" } })
     expect(chatInput).toHaveTextContent("1234567890")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.keyDown(chatInput, { key: "Enter", metaKey: true })
     // We cannot test the value to be changed cause that is essentially a
     // change event.
@@ -284,11 +322,15 @@ describe("ChatInput widget", () => {
     render(<ChatInput {...props} />)
 
     const chatInput = screen.getByTestId("stChatInputTextArea")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "Sample text" } })
 
     const button = screen.getByRole("button")
     expect(button).not.toBeDisabled()
 
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.change(chatInput, { target: { value: "" } })
     expect(button).toBeDisabled()
   })

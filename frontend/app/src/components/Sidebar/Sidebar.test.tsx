@@ -101,10 +101,14 @@ describe("Sidebar Component", () => {
     )
 
     // Click the close sidebar <
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.mouseOver(screen.getByTestId("stSidebarHeader"))
     const sidebarCollapseButton = within(
       screen.getByTestId("stSidebarCollapseButton")
     ).getByRole("button")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(sidebarCollapseButton)
 
     expect(screen.getByTestId("stSidebar")).toHaveAttribute(
@@ -127,6 +131,8 @@ describe("Sidebar Component", () => {
     const expandButton = within(
       screen.getByTestId("stSidebarCollapsedControl")
     ).getByRole("button")
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(expandButton)
 
     expect(screen.getByTestId("stSidebar")).toHaveAttribute(
@@ -149,6 +155,8 @@ describe("Sidebar Component", () => {
     )
 
     // Hover over the sidebar header
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.mouseOver(screen.getByTestId("stSidebarHeader"))
 
     // Displays the collapse <

@@ -98,6 +98,8 @@ describe("withFullScreenWrapper HOC", () => {
     expect(screen.getByText("NOT isFullScreen")).toBeInTheDocument()
 
     // zoomIn sets FullScreenWrapper.expanded == true & isFullScreen == true
+    // TODO: Utilize user-event instead of fireEvent
+    // eslint-disable-next-line testing-library/prefer-user-event
     fireEvent.click(screen.getByTestId("StyledFullScreenButton"))
     expect(screen.getByText("isFullScreen")).toBeInTheDocument()
   })
