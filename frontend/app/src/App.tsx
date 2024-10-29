@@ -1038,20 +1038,6 @@ export class App extends PureComponent<Props, State> {
 
       // Set the favicon to its default values
       this.onPageIconChanged(`${process.env.PUBLIC_URL}/favicon.png`)
-
-      // // Use previously saved layout if exists, otherwise default to CENTERED
-      // // Pages using set_page_config(layout=...) will be overriding these values
-      // this.setState((prevState: State) => {
-      //   const newLayout =
-      //     pageLayouts[newPageScriptHash] ?? PageConfig.Layout.CENTERED
-      //   return {
-      //     layout: newLayout,
-      //     userSettings: {
-      //       ...prevState.userSettings,
-      //       wideMode: newLayout === PageConfig.Layout.WIDE,
-      //     },
-      //   }
-      // })
     } else {
       this.setState({
         fragmentIdsThisRun,
@@ -1502,15 +1488,6 @@ export class App extends PureComponent<Props, State> {
         .map(element => getElementId(element))
         .filter(notUndefined)
     )
-
-    // // Save current page layout before rerun
-    // this.setState((prevState: State) => {
-    //   const pageLayouts = prevState.pageLayouts
-    //   pageLayouts[prevState.currentPageScriptHash] = prevState.layout
-    //   return {
-    //     pageLayouts: pageLayouts,
-    //   }
-    // })
 
     this.sendRerunBackMsg(
       this.widgetMgr.getActiveWidgetStates(activeWidgetIds),
