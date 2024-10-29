@@ -825,6 +825,17 @@ export class App extends PureComponent<Props, State> {
 
   handleNavigation = (navigationMsg: Navigation): void => {
     this.maybeSetState(this.appNavigation.handleNavigation(navigationMsg))
+
+    const { mainScriptHash, preferredLayouts } = this.state
+    const keys = Object.keys(preferredLayouts)
+    if (keys.includes(mainScriptHash)) {
+      const { currentPageScriptHash } = this.state
+      preferredLayouts[currentPageScriptHash] =
+        preferredLayouts[mainScriptHash]
+      this.setState({
+        preferredLayouts: preferredLayouts,
+      })
+    }
   }
 
   handlePageProfileMsg = (pageProfile: PageProfile): void => {
@@ -1428,7 +1439,6 @@ export class App extends PureComponent<Props, State> {
    * to enable runOnSave for this session.
    */
   rerunScript = (alwaysRunOnSave = false): void => {
-    console.log("lets rerun!!")
     this.closeDialog()
 
     if (!this.isServerConnected()) {
@@ -1474,7 +1484,6 @@ export class App extends PureComponent<Props, State> {
 
   onPageChange = (pageScriptHash: string): void => {
     const { elements, mainScriptHash } = this.state
-    console.log(this.state.currentPageScriptHash)
     // We are about to change the page, so clear all auto reruns
     // This also happens in handleNewSession, but it might be too late compared
     // to small interval values, which might trigger a rerun before the new
@@ -1525,15 +1534,6 @@ export class App extends PureComponent<Props, State> {
     pageScriptHash?: string,
     isAutoRerun?: boolean
   ): void => {
-    console.log("AAAAAAA sendRerunBackMsg")
-    // // Save current page layout before rerun
-    // this.setState((prevState: State) => {
-    //   const pageLayouts = prevState.pageLayouts
-    //   pageLayouts[prevState.currentPageScriptHash] = prevState.layout
-    //   return {
-    //     pageLayouts: pageLayouts,
-    //   }
-    // })
     const baseUriParts = this.getBaseUriParts()
     if (!baseUriParts) {
       // If we don't have a connectionManager or if it doesn't have an active
