@@ -68,6 +68,7 @@ class TimeInputTest(DeltaGeneratorTestCase):
             (datetime(2019, 7, 6, 21, 15), "21:15"),
             ("21:15:00", "21:15"),
             ("21:15:10.123", "21:15"),
+            ("2019-07-06 21:15:10.123", "21:15"),
         ]
     )
     def test_value_types(self, arg_value, proto_value):
