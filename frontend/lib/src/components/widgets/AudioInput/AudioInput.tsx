@@ -209,6 +209,7 @@ const AudioInput: React.FC<Props> = ({
       if (isNullOrUndefined(wavesurfer) || isNullOrUndefined(deleteFileUrl)) {
         return
       }
+      console.log("handleClear")
       setRecordingUrl(null)
       wavesurfer.empty()
       uploadClient.deleteFile(deleteFileUrl)
