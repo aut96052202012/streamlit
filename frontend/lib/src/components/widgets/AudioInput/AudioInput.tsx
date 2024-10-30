@@ -175,6 +175,8 @@ const AudioInput: React.FC<Props> = ({
         fragmentId,
       })
         .then(({ successfulUploads, failedUploads }) => {
+          console.log("uploadFiles.then")
+          console.log({ successfulUploads, failedUploads })
           if (failedUploads.length > 0) {
             setIsError(true)
             return
