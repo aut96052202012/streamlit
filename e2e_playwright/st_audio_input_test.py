@@ -30,7 +30,7 @@ from e2e_playwright.shared.app_utils import (
 def stop_recording(audio_input: Locator, app: Page):
     """Stop recording audio and wait for the recording to complete."""
     audio_input.get_by_role("button", name="Stop recording").click()
-    app.wait_for_timeout(5000)  # ci seems to be very slow so adding wait here
+    expect(audio_input.get_by_role("button", name="Play")).to_be_visible()
 
 
 def ensure_waveform_is_not_rendered(audio_input: Locator):
@@ -218,7 +218,6 @@ def test_audio_input_remount_keep_value(app: Page):
     ensure_waveform_rendered(audio_input)
 
 
-@pytest.mark.skip(reason="This test is flaky at the moment.")
 @pytest.mark.only_browser("chromium")
 def test_audio_input_works_in_forms(app: Page):
     """Test the functionality of the audio input component within a form."""
