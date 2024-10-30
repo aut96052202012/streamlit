@@ -68,6 +68,9 @@ def render_form_audio_input():
         st.form_submit_button("Submit")
 
     st.write("Audio Input in Form:", audio_input_from_form)
+    if audio_input_from_form is not None:
+        st.audio(audio_input_from_form)
+        st.write("hey, i exist!!!!")
 
 
 # Fragment Audio Input Section
