@@ -56,6 +56,9 @@ export const uploadFiles = async ({
 }> => {
   console.log("uploadFiles")
   console.log({ files, uploadClient, widgetMgr, widgetInfo, fragmentId })
+  for (const file of files) {
+    console.log(file)
+  }
   let fileUrls: IFileURLs[] = []
 
   try {
