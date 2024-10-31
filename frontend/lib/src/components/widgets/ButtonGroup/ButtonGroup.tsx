@@ -77,11 +77,12 @@ function handleSelection(
     return handleMultiSelection(index, currentSelection ?? [])
   }
 
+  if (style === ButtonGroupProto.Style.TRIGGERS) {
+    return [index]
+  }
+
   // unselect if item is already selected
-  return style !== ButtonGroupProto.Style.TRIGGERS &&
-    currentSelection?.includes(index)
-    ? []
-    : [index]
+  return currentSelection?.includes(index) ? [] : [index]
 }
 
 function getSingleSelection(currentSelection: number[]): number {
@@ -97,21 +98,19 @@ function syncWithWidgetManager(
   valueWithSource: ValueWithSource<ButtonGroupValue>,
   fragmentId?: string
 ): void {
-  console.log(valueWithSource.value)
-  if (
-    element.style === ButtonGroupProto.Style.TRIGGERS &&
-    valueWithSource.value?.length
-  ) {
+  const value = valueWithSource.value
+
+  if (element.style === ButtonGroupProto.Style.TRIGGERS && value?.length) {
     widgetMgr.setStringTriggerValue(
       element,
-      String(valueWithSource.value),
+      String(value),
       { fromUi: valueWithSource.fromUi },
       fragmentId
     )
   } else {
     widgetMgr.setIntArrayValue(
       element,
-      valueWithSource.value,
+      value,
       { fromUi: valueWithSource.fromUi },
       fragmentId
     )
@@ -136,6 +135,7 @@ export function getContentElement(
       break
     case ButtonGroupProto.Style.TRIGGERS:
       kind = BaseButtonKind.TRIGGERS
+      break
   }
   const size =
     style === ButtonGroupProto.Style.BORDERLESS
@@ -201,27 +201,28 @@ function getButtonKindAndSize(
 
 function getButtonGroupOverridesStyle(
   style: ButtonGroupProto.Style,
-  theme: EmotionTheme
+  spacing: EmotionTheme["spacing"]
 ): Record<string, any> {
-  const baseStyle = {
-    flexWrap: "wrap",
-    maxWidth: "fit-content",
-    columnGap: theme.spacing.threeXS,
-    rowGap: theme.spacing.threeXS,
-  }
+  const baseStyle = { flexWrap: "wrap", maxWidth: "fit-content" }
 
   switch (style) {
+    case ButtonGroupProto.Style.BORDERLESS:
+      return {
+        ...baseStyle,
+        columnGap: spacing.threeXS,
+        rowGap: spacing.threeXS,
+      }
     case ButtonGroupProto.Style.PILLS:
       return {
         ...baseStyle,
-        columnGap: theme.spacing.twoXS,
-        rowGap: theme.spacing.twoXS,
+        columnGap: spacing.twoXS,
+        rowGap: spacing.twoXS,
       }
     case ButtonGroupProto.Style.SEGMENTED_CONTROL:
       return {
         ...baseStyle,
-        columnGap: theme.spacing.none,
-        rowGap: theme.spacing.twoXS,
+        columnGap: spacing.none,
+        rowGap: spacing.twoXS,
         // Adding an empty pseudo-element after the last button in the group.
         // This will make buttons only as big as needed without stretching to the whole container width (aka let them 'hug' to the side)
         "::after": {
@@ -332,7 +333,7 @@ function ButtonGroup(props: Readonly<Props>): ReactElement {
     _event: React.SyntheticEvent<HTMLButtonElement>,
     index: number
   ): void => {
-    const newSelected = handleSelection(clickMode, index, value)
+    const newSelected = handleSelection(clickMode, style, index, value)
     setValueWithSource({ value: newSelected, fromUi: true })
   }
 
