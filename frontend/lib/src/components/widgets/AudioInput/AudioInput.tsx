@@ -175,8 +175,6 @@ const AudioInput: React.FC<Props> = ({
         fragmentId,
       })
         .then(({ successfulUploads, failedUploads }) => {
-          console.log("uploadFiles.then")
-          console.log({ successfulUploads, failedUploads })
           if (failedUploads.length > 0) {
             setIsError(true)
             return
@@ -209,7 +207,6 @@ const AudioInput: React.FC<Props> = ({
       if (isNullOrUndefined(wavesurfer) || isNullOrUndefined(deleteFileUrl)) {
         return
       }
-      console.log("handleClear")
       setRecordingUrl(null)
       wavesurfer.empty()
       uploadClient.deleteFile(deleteFileUrl)
