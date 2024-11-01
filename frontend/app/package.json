@@ -13,7 +13,8 @@
     "testWatch": "env NODE_OPTIONS=\"--experimental-worker --max_old_space_size=8192\" craco test --env=../jest/jsdom-polyfill-env.js --runTestsByPath ${TESTPATH}",
     "test:coverage": "env NODE_OPTIONS=--max_old_space_size=8192 craco test --env=../jest/jsdom-polyfill-env.js --coverage --watchAll false --watch false ./",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 src"
+    "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --max-warnings 0 src",
+    "lighthouse:run": "node ./performance/lighthouse.mjs"
   },
   "jest": {
     "resetMocks": false,
@@ -82,6 +83,7 @@
     "axios-mock-adapter": "^1.21.2",
     "babel-plugin-emotion": "^11.0.0",
     "buffer": "^6.0.3",
+    "chrome-launcher": "^1.1.2",
     "eslint": "^8.33.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.6.0",
@@ -99,12 +101,14 @@
     "jest-fetch-mock": "^3.0.3",
     "jest-github-actions-reporter": "^1.0.3",
     "jest-websocket-mock": "^2.4.0",
+    "lighthouse": "^12.2.1",
     "mini-css-extract-plugin": "^2.4.5",
     "prettier": "^2.8.3",
     "prop-types": "^15.7.2",
     "react-scripts": "5.0.1",
     "source-map-explorer": "^2.5.3",
     "start-server-and-test": "^1.15.3",
+    "tree-kill": "^1.2.2",
     "tsconfig-paths-webpack-plugin": "^4.0.1",
     "typescript": "^4.9.5",
     "util": "^0.12.5",
