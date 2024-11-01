@@ -156,6 +156,15 @@ describe("NumberInput widget", () => {
     expect(numberInput).toHaveAttribute("max", "Infinity")
   })
 
+  it("sets input mode", () => {
+    const props = getIntProps()
+    render(<NumberInput {...props} />)
+
+    const numberInput = screen.getByTestId("stNumberInputField")
+
+    expect(numberInput).toHaveAttribute("inputmode", "decimal")
+  })
+
   it("sets min/max values", () => {
     const props = getIntProps({
       hasMin: true,
